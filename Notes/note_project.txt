@@ -1,0 +1,51 @@
+-employee:
+ + id
+ + fullname ( lấy từ tên gmail )
+ + country ( tạo bảng riêng )
+ + gender ( male, female, prefer not to say, non-binary )
+ + mobile number
+ + description
+ + civil id
+ + hire date: (Ngày được tuyển )
+ + end date: (ngày cút )
+- gradurated school
+ + id 	
+ + employee id
+ + school name
+ + dregee
+ + specs name
+ + date of completion
+- job 
+ + id
+ + title
+ + description
+ + department id 
+ + position id
+ - salary 
+ + id
+ + employee id
+ + base salary
+ + allowance 
+ + deductions
+ + pay date
+- work experience 
+ + id 
+ + employee id
+ + company name
+ + job title
+ + start date
+ + end date
+ + job description
+ + relevant ( có liên quan tới việc đang làm hay k ) bool
+- Department ( nơi làm việc)
+ + id
+ + department name
+ + manager id
+ last table not added
+- Attendance Table
+ + attendance_id (Primary Key)
+ + employee_id (Foreign Key)
+ + attendance_date
+ + check_in_time
+ + check_out_time
+ + leave_type (if applicable)
