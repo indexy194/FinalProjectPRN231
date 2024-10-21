@@ -1,5 +1,6 @@
 ﻿using FinalProjectPRN231.API.DTO.Configurations;
 using FinalProjectPRN231.API.Infra.Data;
+using FinalProjectPRN231.API.Services;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -16,7 +17,6 @@ namespace FinalProjectPRN231.API
                 configuration.ReadFrom.Configuration(hostContext.Configuration);
             });
             // Add services to the container.
-            // db context add exception if db not found ( or error instance connection string)
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -29,12 +29,23 @@ namespace FinalProjectPRN231.API
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
-            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             var str = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(str ?? throw new InvalidOperationException("Connection is not found"));
             });
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            //DI
+            builder.Services.AddScoped<IAttendanceHourServices, AttendanceHourServices>();
+            builder.Services.AddScoped<IAttendanceServices, AttendanceServices>();
+            builder.Services.AddScoped<IDepartmentServices, DepartmentServices>();
+            builder.Services.AddScoped<IEducationLevelServices, EducationLevelServices>();
+            builder.Services.AddScoped<IEmployeerServices, EmployeerServices>();
+            builder.Services.AddScoped<IJobDetailServices, JobDetailServices>();
+            builder.Services.AddScoped<IlocationServices, LocationServices>();
+            builder.Services.AddScoped<ISalaryServices, SalaryServices>();
+            builder.Services.AddScoped<IWorkExperienceServices, WorkExperienceServices>();
+           
         }
         public static WebApplication ConfigurePipeline(this WebApplication app)
         {

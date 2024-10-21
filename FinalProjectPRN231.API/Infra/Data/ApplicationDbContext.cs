@@ -1,5 +1,6 @@
 ﻿using FinalProjectPRN231.CoreBusiness.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace FinalProjectPRN231.API.Infra.Data
 {
@@ -26,6 +27,7 @@ namespace FinalProjectPRN231.API.Infra.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
         }
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)

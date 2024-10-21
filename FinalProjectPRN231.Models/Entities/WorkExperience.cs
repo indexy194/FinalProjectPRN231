@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FinalProjectPRN231.CoreBusiness.Entities
+﻿namespace FinalProjectPRN231.CoreBusiness.Entities
 {
     public class WorkExperience : CommonEntity
     {
         public int Id { get; set; }
-        public int EmployeeId { get; set; }
+        public int EmployeerId { get; set; }
         public string CompanyName { get; set; }
         public string JobTitle { get; set; }
         public string JobDescription { get; set; }
